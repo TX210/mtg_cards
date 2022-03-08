@@ -4,11 +4,11 @@ import 'package:mtg_cards/models/card/rullings/rulings.model.dart';
 
 import 'translations/translations.model.dart';
 
-part 'card.model.g.dart';
+part 'card_info.model.g.dart';
 
 @JsonSerializable()
-class Card {
-  Card(
+class CardInfo {
+  CardInfo(
       {this.name,
       this.names,
       this.manaCost,
@@ -60,7 +60,8 @@ class Card {
   String? originalType;
   String? id;
 
-  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
+  factory CardInfo.fromJson(Map<String, dynamic> json) =>
+      _$CardInfoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CardToJson(this);
+  Map<String, dynamic> toJson() => _$CardInfoToJson(this);
 }

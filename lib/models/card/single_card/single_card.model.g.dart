@@ -7,7 +7,7 @@ part of 'single_card.model.dart';
 // **************************************************************************
 
 SingleCard _$SingleCardFromJson(Map<String, dynamic> json) => SingleCard(
-      card: Card.fromJson(json['card'] as Map<String, dynamic>),
+      card: CardInfo.fromJson(json['card'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SingleCardToJson(SingleCard instance) =>

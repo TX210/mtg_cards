@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'card.model.dart';
+part of 'card_info.model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Card _$CardFromJson(Map<String, dynamic> json) => Card(
+CardInfo _$CardInfoFromJson(Map<String, dynamic> json) => CardInfo(
       name: json['name'] as String?,
       names:
           (json['names'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -46,7 +46,7 @@ Card _$CardFromJson(Map<String, dynamic> json) => Card(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
+Map<String, dynamic> _$CardInfoToJson(CardInfo instance) => <String, dynamic>{
       'name': instance.name,
       'names': instance.names,
       'manaCost': instance.manaCost,
