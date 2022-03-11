@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_cards/bloc/search/search_bloc.dart';
+import 'package:mtg_cards/models/card/card_info.model.dart';
 import 'package:mtg_cards/services/cards.dart';
 import 'package:mtg_cards/widgets/floating_search.dart';
 import 'package:mtg_cards/widgets/small_card.dart';
@@ -19,15 +20,13 @@ class HomeScreen extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Padding(
               padding: const EdgeInsets.only(top: 50.0),
-              child: FutureBuilder(
+              child: FutureBuilder<CardInfo>(
                 future: CardsService().getCard(386616),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [1, 2, 3]
-                            .map((e) => SmallCard(cardInfo: snapshot.data))
-                            .toList());
+                        children: [SmallCard(cardInfo: snapshot.data)]);
                   }
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,

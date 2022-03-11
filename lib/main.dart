@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mtg_cards/models/card/card_info.model.dart';
+import 'package:mtg_cards/screens/card.screen.dart';
 import 'package:mtg_cards/screens/home.screen.dart';
 
 void main() {
@@ -23,6 +25,11 @@ class MyApp extends StatelessWidget {
   }
 
   final _router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomeScreen())
+    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+    GoRoute(
+        path: '/card/:id',
+        builder: (context, state) {
+          return CardScreen(card: state.extra! as CardInfo);
+        })
   ]);
 }
