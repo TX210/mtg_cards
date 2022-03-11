@@ -14,7 +14,7 @@ class SearchListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        card.name as String,
+        card.name,
         textAlign: TextAlign.center,
       ),
     );

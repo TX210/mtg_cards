@@ -27,9 +27,9 @@ class SmallCard extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: cardInfo.id as String,
+                tag: cardInfo.id,
                 child: CachedNetworkImage(
-                  imageUrl: cardInfo.imageUrl as String,
+                  imageUrl: cardInfo.imageUrl,
                   placeholder: (context, url) => const SkeletonAvatar(
                     style: SkeletonAvatarStyle(
                         width: double.infinity, height: 190),
@@ -43,7 +43,7 @@ class SmallCard extends StatelessWidget {
                   ]),
                 ),
               ),
-              Text(cardInfo.name as String),
+              Text(cardInfo.name),
             ],
           ),
         ),

@@ -20,7 +20,7 @@ class _CardImageState extends State<CardImage> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: widget.card.id as String,
+      tag: widget.card.id,
       child: Transform(
         transform: Matrix4.identity()
           ..setEntry(3, 2, 0.001) // perspective
@@ -31,7 +31,7 @@ class _CardImageState extends State<CardImage> {
           onPanUpdate: (details) => setState(() => _offset += details.delta),
           onDoubleTap: () => setState(() => _offset = Offset.zero),
           child: CachedNetworkImage(
-            imageUrl: widget.card.imageUrl as String,
+            imageUrl: widget.card.imageUrl,
           ),
         ),
       ),

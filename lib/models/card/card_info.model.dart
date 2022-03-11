@@ -9,56 +9,56 @@ part 'card_info.model.g.dart';
 @JsonSerializable()
 class CardInfo {
   CardInfo(
-      {this.name,
+      {required this.name,
       this.names,
-      this.manaCost,
+      required this.manaCost,
       this.cmc,
-      this.colors,
+      required this.colors,
       this.colorIdentity,
-      this.type,
+      required this.type,
       this.types,
       this.subtypes,
-      this.rarity,
+      required this.rarity,
       this.set,
-      this.text,
+      required this.text,
       this.artist,
-      this.number,
-      this.power,
+      required this.number,
+      required this.power,
       this.toughness,
       this.layout,
       this.mutliverseid,
-      this.imageUrl,
+      required this.imageUrl,
       this.rulings,
       this.translations,
       this.printings,
       this.originalType,
-      this.id});
+      required this.id});
 
-  String? name;
+  String name;
   List<String>? names;
-  String? manaCost;
+  String manaCost;
   num? cmc;
-  List<String>? colors;
+  List<String> colors;
   List<String>? colorIdentity;
-  String? type;
+  String type;
   List<String>? types;
   List<String>? subtypes;
-  String? rarity;
+  String rarity;
   String? set;
-  String? text;
+  String text;
   String? artist;
-  String? number;
-  String? power;
+  String number;
+  String power;
   String? toughness;
   String? layout;
   num? mutliverseid;
-  String? imageUrl;
+  String imageUrl;
   List<Rulings>? rulings;
   @JsonKey(name: 'foreignNames')
   List<Translations>? translations;
   List<String>? printings;
   String? originalType;
-  String? id;
+  String id;
 
   factory CardInfo.fromJson(Map<String, dynamic> json) =>
       _$CardInfoFromJson(json);
