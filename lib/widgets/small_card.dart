@@ -29,7 +29,7 @@ class SmallCard extends StatelessWidget {
               Hero(
                 tag: cardInfo.id,
                 child: CachedNetworkImage(
-                  imageUrl: cardInfo.imageUrl,
+                  imageUrl: cardInfo.imageUrl ?? "No image",
                   placeholder: (context, url) => const SkeletonAvatar(
                     style: SkeletonAvatarStyle(
                         width: double.infinity, height: 190),

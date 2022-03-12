@@ -12,20 +12,20 @@ class CardInfo {
       {required this.name,
       this.names,
       required this.manaCost,
-      this.cmc,
+      required this.cmc,
       required this.colors,
-      this.colorIdentity,
+      required this.colorIdentity,
       required this.type,
-      this.types,
-      this.subtypes,
+      required this.types,
+      required this.subtypes,
       required this.rarity,
-      this.set,
+      required this.set,
       required this.text,
-      this.artist,
+      required this.artist,
       required this.number,
       required this.power,
       this.toughness,
-      this.layout,
+      required this.layout,
       this.mutliverseid,
       required this.imageUrl,
       this.rulings,
@@ -37,22 +37,22 @@ class CardInfo {
   String name;
   List<String>? names;
   String manaCost;
-  num? cmc;
+  num cmc;
   List<String> colors;
-  List<String>? colorIdentity;
+  List<String> colorIdentity;
   String type;
-  List<String>? types;
-  List<String>? subtypes;
+  List<String> types;
+  List<String> subtypes;
   String rarity;
-  String? set;
+  String set;
   String text;
-  String? artist;
-  String number;
-  String power;
+  String artist;
+  String? number;
+  String? power;
   String? toughness;
-  String? layout;
+  String layout;
   num? mutliverseid;
-  String imageUrl;
+  String? imageUrl;
   List<Rulings>? rulings;
   @JsonKey(name: 'foreignNames')
   List<Translations>? translations;
@@ -60,8 +60,37 @@ class CardInfo {
   String? originalType;
   String id;
 
+  Stats getStats() {
+    return Stats(
+        number, power, toughness, manaCost, colors, type, layout, cmc, rarity);
+  }
+
   factory CardInfo.fromJson(Map<String, dynamic> json) =>
       _$CardInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$CardInfoToJson(this);
+}
+
+class Stats {
+  String? number;
+  String? power;
+  String? toughnes;
+  String manaCost;
+  List<String> colors;
+  String type;
+  String? layout;
+  num? cmc;
+  String rarity;
+
+  Stats(
+    this.number,
+    this.power,
+    this.toughnes,
+    this.manaCost,
+    this.colors,
+    this.type,
+    this.layout,
+    this.cmc,
+    this.rarity,
+  );
 }
