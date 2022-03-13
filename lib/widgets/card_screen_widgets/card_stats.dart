@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_cards/models/card/card_info.model.dart';
+import 'package:mtg_cards/utils/utils.dart';
+import 'package:mtg_cards/widgets/functional/image_text.dart';
 
 class CardStats extends StatelessWidget {
   final Stats stats;
@@ -7,22 +9,65 @@ class CardStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Rarity(stats.rarity),
-          Text(stats.manaCost),
-          Text(stats.power as String),
-          Text(stats.toughnes as String),
-          Text(stats.cmc.toString()),
-          Text(stats.colors.toString()),
-          Text(stats.layout as String),
-          Text(stats.number as String),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        StatsText(stats.type),
+        Rarity(stats.rarity),
+        ManaCost(stats.manaCost),
+        if (stats.power != null)
+          ImageText(
+              alignment: MainAxisAlignment.end,
+              fontSize: 18,
+              imagePath: 'assets/icons/power.png',
+              text: stats.power as String),
+        if (stats.toughnes != null)
+          ImageText(
+              alignment: MainAxisAlignment.end,
+              fontSize: 18,
+              imagePath: 'assets/icons/toughness.png',
+              text: stats.toughnes as String),
+        StatsText('Converted Mana Cost: ${stats.cmc.toString()}'),
+        StatsText('Layout: ${stats.layout}'),
+        StatsText('Card Number: ${stats.number as String}'),
+      ],
+    );
+  }
+}
+
+class StatsText extends StatelessWidget {
+  final String text;
+  const StatsText(this.text, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      softWrap: true,
+      textAlign: TextAlign.center,
+      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class ManaCost extends StatelessWidget {
+  final String manaCost;
+  const ManaCost(this.manaCost, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> images = parseMana(manaCost)
+        .map((mana) => Image.asset(
+              'assets/icons/${mana.toLowerCase()}.png',
+              fit: BoxFit.cover,
+              width: 30,
+              height: 30,
+            ))
+        .toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: images,
     );
   }
 }

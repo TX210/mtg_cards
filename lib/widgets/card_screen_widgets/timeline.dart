@@ -64,6 +64,7 @@ class Timeline extends StatelessWidget {
                   width: 20.0,
                   decoration: BoxDecoration(
                     color: Colors.purple[300],
+                    border: Border.all(color: Colors.white),
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,

@@ -47,7 +47,7 @@ class CardInfo {
   String set;
   String text;
   String artist;
-  String? number;
+  String number;
   String? power;
   String? toughness;
   String layout;
@@ -78,8 +78,8 @@ class Stats {
   String manaCost;
   List<String> colors;
   String type;
-  String? layout;
-  num? cmc;
+  String layout;
+  num cmc;
   String rarity;
 
   Stats(

@@ -25,7 +25,7 @@ CardInfo _$CardInfoFromJson(Map<String, dynamic> json) => CardInfo(
       set: json['set'] as String,
       text: json['text'] as String,
       artist: json['artist'] as String,
-      number: json['number'] as String?,
+      number: json['number'] as String,
       power: json['power'] as String?,
       toughness: json['toughness'] as String?,
       layout: json['layout'] as String,
