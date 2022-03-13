@@ -36,17 +36,17 @@ class CardInfo {
 
   String name;
   List<String>? names;
-  String manaCost;
-  num cmc;
-  List<String> colors;
-  List<String> colorIdentity;
-  String type;
-  List<String> types;
-  List<String> subtypes;
-  String rarity;
-  String set;
-  String text;
-  String artist;
+  String? manaCost;
+  num? cmc;
+  List<String>? colors;
+  List<String>? colorIdentity;
+  String? type;
+  List<String>? types;
+  List<String>? subtypes;
+  String? rarity;
+  String? set;
+  String? text;
+  String? artist;
   String number;
   String? power;
   String? toughness;
@@ -75,12 +75,12 @@ class Stats {
   String? number;
   String? power;
   String? toughnes;
-  String manaCost;
-  List<String> colors;
-  String type;
-  String layout;
-  num cmc;
-  String rarity;
+  String? manaCost;
+  List<String>? colors;
+  String? type;
+  String? layout;
+  num? cmc;
+  String? rarity;
 
   Stats(
     this.number,

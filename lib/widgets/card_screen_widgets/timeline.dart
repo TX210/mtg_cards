@@ -18,6 +18,9 @@ class Timeline extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: rulings.length,
         itemBuilder: (context, item) {
+          if (rulings.isEmpty) {
+            return const Text('No Rulings yet');
+          }
           return Stack(
             alignment: Alignment.centerLeft,
             children: [

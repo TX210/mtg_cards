@@ -13,7 +13,6 @@ class SmallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: sized_box_for_whitespace
     return InkWell(
       onTap: () {
         context.go('/card/${cardInfo.id}', extra: cardInfo);
@@ -25,22 +24,25 @@ class SmallCard extends StatelessWidget {
           elevation: 5,
           margin: const EdgeInsets.all(5),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Hero(
                 tag: cardInfo.id,
                 child: CachedNetworkImage(
-                  imageUrl: cardInfo.imageUrl ?? "No image",
+                  imageUrl: cardInfo.imageUrl ?? 'not image',
                   placeholder: (context, url) => const SkeletonAvatar(
                     style: SkeletonAvatarStyle(
                         width: double.infinity, height: 190),
                   ),
-                  errorWidget: (context, url, error) => Column(children: [
-                    const Icon(
-                      Icons.error,
-                      color: Colors.red,
-                    ),
-                    Text(error)
-                  ]),
+                  errorWidget: (context, url, error) => Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Icon(
+                          Icons.error,
+                          color: Colors.red,
+                        ),
+                        Text('No image available')
+                      ]),
                 ),
               ),
               Text(cardInfo.name),

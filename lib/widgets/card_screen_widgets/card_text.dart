@@ -8,29 +8,18 @@ class CardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var splittedText = getSplittedText(text);
-
-    return Builder(builder: (context) {
-      if (splittedText is String) {
-        return Text(splittedText,
-            style: const TextStyle(fontSize: 14, fontStyle: FontStyle.normal));
-      }
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Abilities(splittedText['metaText']),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(splittedText['mainText'],
-                style: const TextStyle(
-                  height: 1.4,
-                  fontSize: 14,
-                  fontStyle: FontStyle.normal,
-                )),
-          )
-        ],
-      );
-    });
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(text,
+            style: const TextStyle(
+              height: 1.4,
+              fontSize: 14,
+              fontStyle: FontStyle.normal,
+            )),
+      ),
+    );
   }
 }
 

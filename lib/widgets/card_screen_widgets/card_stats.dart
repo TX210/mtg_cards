@@ -16,14 +16,21 @@ class CardStats extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           StatsText(
-            stats.type,
+            stats.type ?? 'Unknown type',
             size: 18,
           ),
-          Row(
-            children: [
-              Rarity(stats.rarity),
-              ManaCost(stats.manaCost),
-            ],
+          const Divider(
+            height: 1,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: Row(
+              children: [
+                Rarity(stats.rarity ?? 'Unknown Rarity'),
+                ManaCost(stats.manaCost ?? 'No mana cost'),
+              ],
+            ),
           ),
           StatsText('Converted Mana Cost: ${stats.cmc.toString()}'),
           StatsText('Layout: ${stats.layout}'),
@@ -82,6 +89,7 @@ class ManaCost extends StatelessWidget {
               fit: BoxFit.cover,
               width: 25,
               height: 25,
+              errorBuilder: (context, url, error) => const SizedBox(),
             ))
         .toList();
     return Row(

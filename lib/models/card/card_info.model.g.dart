@@ -10,21 +10,23 @@ CardInfo _$CardInfoFromJson(Map<String, dynamic> json) => CardInfo(
       name: json['name'] as String,
       names:
           (json['names'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      manaCost: json['manaCost'] as String,
-      cmc: json['cmc'] as num,
+      manaCost: json['manaCost'] as String?,
+      cmc: json['cmc'] as num?,
       colors:
-          (json['colors'] as List<dynamic>).map((e) => e as String).toList(),
-      colorIdentity: (json['colorIdentity'] as List<dynamic>)
-          .map((e) => e as String)
+          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      colorIdentity: (json['colorIdentity'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
-      type: json['type'] as String,
-      types: (json['types'] as List<dynamic>).map((e) => e as String).toList(),
-      subtypes:
-          (json['subtypes'] as List<dynamic>).map((e) => e as String).toList(),
-      rarity: json['rarity'] as String,
-      set: json['set'] as String,
-      text: json['text'] as String,
-      artist: json['artist'] as String,
+      type: json['type'] as String?,
+      types:
+          (json['types'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      subtypes: (json['subtypes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      rarity: json['rarity'] as String?,
+      set: json['set'] as String?,
+      text: json['text'] as String?,
+      artist: json['artist'] as String?,
       number: json['number'] as String,
       power: json['power'] as String?,
       toughness: json['toughness'] as String?,
