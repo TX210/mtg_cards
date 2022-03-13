@@ -26,4 +26,17 @@ class CardsService {
     ListCards cardList = ListCards.fromJson(cardData.data);
     return cardList.cards;
   }
+
+  Future<List<CardInfo>> getRandomCards() async {
+    try {
+      Response cardData = await ApiClient().dio.get(
+            'cards?pageSize=3&random=true',
+          );
+      ListCards cardList = ListCards.fromJson(cardData.data);
+      return cardList.cards;
+    } catch (e) {
+      print(e);
+      return [];
+    }
+  }
 }

@@ -20,13 +20,19 @@ class HomeScreen extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Padding(
               padding: const EdgeInsets.only(top: 50.0),
-              child: FutureBuilder<CardInfo>(
-                future: CardsService().getCard(386616),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
+              child: FutureBuilder(
+                future: CardsService().getRandomCards(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<CardInfo>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [SmallCard(cardInfo: snapshot.data)]);
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: snapshot.data!
+                          .map(
+                            (card) => SmallCard(cardInfo: card),
+                          )
+                          .toList(),
+                    );
                   }
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
