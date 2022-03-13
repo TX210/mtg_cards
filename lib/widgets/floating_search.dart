@@ -50,7 +50,7 @@ class FloatingSearch extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       for (CardInfo card in state.loadedCards)
-                        SearchListItem(card: card)
+                        SearchListItem(card: card),
                     ],
                   );
                 }
