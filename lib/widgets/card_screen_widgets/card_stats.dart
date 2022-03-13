@@ -9,44 +9,63 @@ class CardStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        StatsText(stats.type),
-        Rarity(stats.rarity),
-        ManaCost(stats.manaCost),
-        if (stats.power != null)
-          ImageText(
-              alignment: MainAxisAlignment.end,
-              fontSize: 18,
-              imagePath: 'assets/icons/power.png',
-              text: stats.power as String),
-        if (stats.toughnes != null)
-          ImageText(
-              alignment: MainAxisAlignment.end,
-              fontSize: 18,
-              imagePath: 'assets/icons/toughness.png',
-              text: stats.toughnes as String),
-        StatsText('Converted Mana Cost: ${stats.cmc.toString()}'),
-        StatsText('Layout: ${stats.layout}'),
-        StatsText('Card Number: ${stats.number as String}'),
-      ],
+    return Container(
+      padding: const EdgeInsets.only(left: 5),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          StatsText(
+            stats.type,
+            size: 18,
+          ),
+          Row(
+            children: [
+              Rarity(stats.rarity),
+              ManaCost(stats.manaCost),
+            ],
+          ),
+          StatsText('Converted Mana Cost: ${stats.cmc.toString()}'),
+          StatsText('Layout: ${stats.layout}'),
+          StatsText('Card Number: ${stats.number as String}'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (stats.power != null)
+                ImageText(
+                    alignment: MainAxisAlignment.end,
+                    fontSize: 18,
+                    imagePath: 'assets/icons/power.png',
+                    text: stats.power as String),
+              if (stats.toughnes != null)
+                ImageText(
+                    alignment: MainAxisAlignment.end,
+                    fontSize: 18,
+                    imagePath: 'assets/icons/toughness.png',
+                    text: stats.toughnes as String),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
 
 class StatsText extends StatelessWidget {
   final String text;
-  const StatsText(this.text, {Key? key}) : super(key: key);
+  final double size;
+  const StatsText(this.text, {Key? key, this.size = 15}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      softWrap: true,
-      textAlign: TextAlign.center,
-      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Text(
+        text,
+        softWrap: true,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: size, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
@@ -61,8 +80,8 @@ class ManaCost extends StatelessWidget {
         .map((mana) => Image.asset(
               'assets/icons/${mana.toLowerCase()}.png',
               fit: BoxFit.cover,
-              width: 30,
-              height: 30,
+              width: 25,
+              height: 25,
             ))
         .toList();
     return Row(

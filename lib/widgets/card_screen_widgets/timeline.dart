@@ -40,8 +40,7 @@ class Timeline extends StatelessWidget {
                         children: [
                           Text(
                             rulings[item].text as String,
-                            style: const TextStyle(
-                                color: Colors.grey, fontSize: 12),
+                            style: const TextStyle(fontSize: 12),
                           )
                         ],
                       ),
@@ -63,7 +62,7 @@ class Timeline extends StatelessWidget {
                   height: 20.0,
                   width: 20.0,
                   decoration: BoxDecoration(
-                    color: Colors.purple[300],
+                    color: Theme.of(context).primaryColor,
                     border: Border.all(color: Colors.white),
                     boxShadow: const [
                       BoxShadow(

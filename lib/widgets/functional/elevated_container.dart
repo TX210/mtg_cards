@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 
 class ElevatedContainer extends StatelessWidget {
   final Widget child;
+  final Color backgroundColor;
+  final bool constrained;
   const ElevatedContainer({
     Key? key,
+    this.backgroundColor = const Color(0xFF7e8aa2),
+    this.constrained = false,
     required this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: constrained
+          ? const BoxConstraints(maxHeight: 350)
+          : const BoxConstraints.tightFor(),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -23,8 +30,6 @@ class ElevatedContainer extends StatelessWidget {
           ]),
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(10),
-      // elevation: 5,
-      // borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: child,
     );
   }

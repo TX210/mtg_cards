@@ -7,7 +7,6 @@ import 'package:mtg_cards/widgets/card_screen_widgets/card_stats.dart';
 import 'package:mtg_cards/widgets/card_screen_widgets/card_text.dart';
 import 'package:mtg_cards/widgets/card_screen_widgets/timeline.dart';
 import 'package:mtg_cards/widgets/functional/elevated_container.dart';
-import 'package:mtg_cards/widgets/functional/image_text.dart';
 
 class CardScreen extends StatefulWidget {
   final CardInfo card;
@@ -37,10 +36,13 @@ class _CardScreenState extends State<CardScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               ElevatedContainer(
+                constrained: true,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CardImage(card: widget.card),
-                    Expanded(child: CardStats(widget.card.getStats()))
+                    Expanded(flex: 1, child: CardImage(card: widget.card)),
+                    Expanded(flex: 1, child: CardStats(widget.card.getStats()))
                   ],
                 ),
               ),
@@ -62,9 +64,6 @@ class _CardScreenState extends State<CardScreen> {
                   children: [Timeline(widget.card.rulings!)],
                 ),
               ),
-              ImageText(
-                  imagePath: 'assets/icons/artist-nib.png',
-                  text: widget.card.artist)
             ],
           ),
         ),
