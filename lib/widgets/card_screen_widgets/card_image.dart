@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mtg_cards/models/card/card_info.model.dart';
-import 'package:mtg_cards/widgets/functional/image_text.dart';
 
 class CardImage extends StatefulWidget {
   final CardInfo card;
@@ -36,7 +35,12 @@ class _CardImageState extends State<CardImage> {
                   setState(() => _offset += details.delta),
               onDoubleTap: () => setState(() => _offset = Offset.zero),
               child: CachedNetworkImage(
-                imageUrl: widget.card.imageUrl as String,
+                progressIndicatorBuilder: (context, url, progress) =>
+                    CircularProgressIndicator(
+                  value: progress.progress,
+                  color: Colors.amber,
+                ),
+                imageUrl: widget.card.imageUrl ?? 'no image',
                 errorWidget: (context, url, error) {
                   return Container(
                       decoration: BoxDecoration(
@@ -44,14 +48,29 @@ class _CardImageState extends State<CardImage> {
                             Border.all(width: 1, color: Colors.grey.shade400),
                       ),
                       alignment: Alignment.center,
-                      child: const Text('No image'));
+                      child: const Align(
+                          alignment: Alignment.center,
+                          child: Text('No image')));
                 },
               ),
             ),
           ),
         ),
-        ImageText(
-            imagePath: 'assets/icons/artist-nib.png', text: widget.card.artist)
+        if (widget.card.artist != null)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/icons/artist-nib.png',
+                  errorBuilder: (context, error, stackTrace) =>
+                      const SizedBox()),
+              Expanded(
+                child: Text(
+                  widget.card.artist ?? 'Unknown artist',
+                  style: const TextStyle(fontSize: 14),
+                ),
+              ),
+            ],
+          )
       ],
     );
   }

@@ -6,7 +6,7 @@ class ElevatedContainer extends StatelessWidget {
   final bool constrained;
   const ElevatedContainer({
     Key? key,
-    this.backgroundColor = const Color(0xFF7e8aa2),
+    this.backgroundColor = Colors.white,
     this.constrained = false,
     required this.child,
   }) : super(key: key);

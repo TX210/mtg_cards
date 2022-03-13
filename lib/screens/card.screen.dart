@@ -46,22 +46,21 @@ class _CardScreenState extends State<CardScreen> {
                   ],
                 ),
               ),
-              ElevatedContainer(child: CardText(widget.card.text)),
+              ElevatedContainer(
+                  child: CardText(widget.card.text ?? 'No text avaialble')),
               ElevatedContainer(
                 child: ExpansionTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Icon(Icons.history_edu_outlined),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Rullings',
-                        ),
-                      ),
-                    ],
+                  
+                  leading: const Icon(Icons.history_edu_outlined),
+                  title: const Align(
+                  
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Rullings',
+                      textAlign: TextAlign.start,
+                    ),
                   ),
-                  children: [Timeline(widget.card.rulings!)],
+                  children: [Timeline(widget.card.rulings ?? [])],
                 ),
               ),
             ],
